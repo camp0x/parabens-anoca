@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Parabéns, Anoca 🎂</title>
+
+  <style>
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+      font-family: "Segoe UI", sans-serif; 
+    }
+
+    /* ✅ AGORA PERMITE SCROLL */
+    body{
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #1b1b2f, #0f0f1a 55%, #090912);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      padding: 50px 16px;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+    }
+
+    /* barra de rolagem bonita (Chrome/Edge) */
+    body::-webkit-scrollbar{
+      width: 8px;
+    }
+    body::-webkit-scrollbar-thumb{
+      background: rgba(255,255,255,.25);
+      border-radius: 8px;
+    }
+    body::-webkit-scrollbar-track{
+      background: transparent;
+    }
+
+    .page{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      opacity: 0;
+      animation: pageIn .55s ease forwards;
+    }
+
+    @keyframes pageIn{ 
+      from{opacity:0} 
+      to{opacity:1} 
+    }
+
+    .page.fade-out{ 
+      animation: pageOut .45s ease forwards; 
+    }
+
+    @keyframes pageOut{ 
+      from{opacity:1} 
+      to{opacity:0} 
+    }
+
+    .wrap{ 
+      width: min(900px, 100%); 
+    }
+
+    .card{
+      width: 100%;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      box-shadow: 0 20px 45px rgba(0,0,0,.45);
+      padding: 30px;
+      backdrop-filter: blur(6px);
+    }
+
+    h1{
+      font-size: clamp(1.9rem, 4vw, 2.7rem);
+      margin-bottom: 10px;
+      text-shadow: 0 10px 30px rgba(0,0,0,.45);
+    }
+
+    .subtitle{
+      font-size: 1.05rem;
+      opacity: .9;
+      margin-bottom: 18px;
+    }
+
+    .text{
+      font-size: 1.05rem;
+      line-height: 1.7;
+      opacity: .95;
+      white-space: pre-line;
+      outline: none;
+    }
+
+    .divider{
+      margin: 26px 0;
+      height: 1px;
+      background: linear-gradient(
+        to right, 
+        transparent, 
+        rgba(255,255,255,.25), 
+        transparent
+      );
+    }
+
+    .actions{
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .btn{
+      border: none;
+      border-radius: 999px;
+      padding: 12px 18px;
+      cursor: pointer;
+      background: rgba(255,255,255,.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.14);
+      transition: 
+        transform .15s ease, 
+        box-shadow .15s ease, 
+        background .15s ease;
+    }
+
+    .btn:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 14px 28px rgba(0,0,0,.30);
+      background: rgba(255,255,255,.16);
+    }
+
+    /* ✅ botão extra com destaque leve (opcional, mas bonito) */
+    .btn.special{
+      border-color: rgba(255,255,255,.22);
+      background: rgba(255,255,255,.16);
+    }
+
+    .hint{
+      margin-top: 12px;
+      font-size: .92rem;
+      opacity: .65;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page" id="page">
+    <div class="wrap">
+      <div class="card">
+        <h1>Parabéns, Anoca 🎂</h1>
+        <div class="subtitle">
+          Agora é a parte que eu escrevi com calma, pensando em você.
+        </div>
+
+        <div class="text" contenteditable="true" spellcheck="false">
+Hoje é seu dia, e eu queria te desejar muito mais do que só um “feliz aniversário”.
+
+Queria te desejar leveza, paz e aqueles sorrisos que surgem do nada.
+Queria te desejar momentos bons, mas também força pros dias difíceis —
+porque você é muito mais forte do que imagina.
+
+Você é inteligente de um jeito que impressiona,
+tem um cuidado que aparece nos detalhes
+e um jeito único de fazer quem tá perto se sentir importante.
+Mesmo sem perceber, você marca as pessoas.
+
+Mesmo de longe, você consegue estar presente.
+Mesmo sem falar nada, você consegue dizer muito.
+E isso… isso é raro.
+
+E no meio de tudo isso, eu queria te agradecer.
+Obrigado por ser minha amiga.
+Pelas ligações às 5h da manhã pra me pedir coisas,
+por me entreter no trabalho,
+por reclamar do TI… para o próprio TI (eu mesmo).
+Por me mostrar suas compras,
+seu quarto bagunçado,
+seus livros malucos
+e por me fazer escutar TODOS os latidos do Oliver ou do Kyan
+(sla qual dos dois, mas ouço todos).
+
+Saiba que eu sempre abro um sorriso
+quando você fala besteira,
+ou quando simplesmente resmunga kkk.
+Esses momentos simples, do nada,
+acabam sendo os que mais ficam.
+
+Hoje você tá longe, e isso às vezes pesa.
+Mas mesmo assim, você continua perto de um jeito que não dá pra explicar.
+E, quem sabe um dia,
+em vez de mensagem, ligação ou áudio,
+eu te queira perto de verdade…
+(desculpa, mesmo que você não acredite, eu ainda vou ver seus pijamas de perto kkkk)
+
+Feliz vida.
+Feliz você.
+E que, de algum jeito,
+a distância vire só um detalhe no meio de tanta coisa boa.
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="actions">
+          <button class="btn" data-go="presentes.html">Voltar pras cartas 🃏</button>
+          <button class="btn" data-go="index.html">Voltar ao início ↩</button>
+
+          <!-- ✅ NOVO: página extra -->
+          <button class="btn special" data-go="coisas-que-nunca-disse.html">
+            Coisas que eu nunca te disse 🗝️
+          </button>
+        </div>
+
+        <div class="hint">
+          Dica: role com calma — esse texto foi feito pra ser lido sem pressa 💛
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const page = document.getElementById('page');
+
+    document.addEventListener('click', (e) => {
+      const go = e.target.closest('[data-go]');
+      if (!go) return;
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      const url = go.getAttribute('data-go');
+      page.classList.add('fade-out');
+
+      setTimeout(() => {
+        window.location.href = url;
+      }, 420);
+    });
+
+    // Esc volta pras cartas
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        page.classList.add('fade-out');
+        setTimeout(() => window.location.href = 'presentes.html', 420);
+      }
+    });
+  </script>
+</body>
+</html>

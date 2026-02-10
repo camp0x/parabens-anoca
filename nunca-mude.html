@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>nunca mude</title>
+
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body{
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #1b1b2f, #0f0f1a 55%, #090912);
+      color: #fff;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+      display: flex;
+      justify-content: center;
+      padding: 48px 16px;
+    }
+
+    body::-webkit-scrollbar{ width: 8px; }
+    body::-webkit-scrollbar-thumb{
+      background: rgba(255,255,255,.25);
+      border-radius: 8px;
+    }
+    body::-webkit-scrollbar-track{ background: transparent; }
+
+    .page{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      opacity: 0;
+      animation: pageIn .55s ease forwards;
+    }
+    @keyframes pageIn{ from{opacity:0} to{opacity:1} }
+    .page.fade-out{ animation: pageOut .45s ease forwards; }
+    @keyframes pageOut{ from{opacity:1} to{opacity:0} }
+
+    .sparkle{
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 18% 24%, rgba(255,255,255,.12) 0 2px, transparent 3px),
+        radial-gradient(circle at 78% 20%, rgba(255,255,255,.10) 0 2px, transparent 3px),
+        radial-gradient(circle at 60% 70%, rgba(255,255,255,.08) 0 2px, transparent 3px),
+        radial-gradient(circle at 22% 72%, rgba(255,255,255,.10) 0 2px, transparent 3px);
+      opacity: .9;
+      animation: floaty 8s ease-in-out infinite;
+    }
+    @keyframes floaty{
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+
+    .wrap{
+      width: min(980px, 100%);
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(100vh - 96px);
+      text-align: center;
+    }
+
+    .hero{
+      width: 100%;
+      padding: 18px 10px;
+    }
+
+    .small{
+      opacity: .75;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: .85rem;
+      margin-bottom: 14px;
+      animation: fadeUp .85s ease .1s both;
+    }
+
+    h1{
+      font-size: clamp(2.3rem, 5.5vw, 3.6rem);
+      line-height: 1.05;
+      margin-bottom: 18px;
+      animation: popIn 1.05s ease .12s both;
+    }
+
+    .msg{
+      font-size: clamp(1.05rem, 2.1vw, 1.3rem);
+      line-height: 1.85;
+      opacity: .92;
+      max-width: 52ch;
+      margin: 0 auto;
+      animation: fadeUp 1.05s ease .32s both;
+    }
+
+    .highlight{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.10);
+      box-shadow: 0 10px 22px rgba(0,0,0,.22);
+      font-size: .95em;
+      white-space: nowrap;
+    }
+
+    /* ❤️ LOVE YOU BABY */
+    .love{
+      margin-top: 24px;
+      font-size: clamp(1.4rem, 3.6vw, 1.9rem);
+      font-weight: 600;
+      letter-spacing: .04em;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    .love.show{
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ❤️ CORAÇÃO DENTRO DA BOLHA */
+    .heart{
+      font-size: 1.1em;
+      display: inline-block;
+      animation: heartbeatSlow 2.2s ease-in-out infinite;
+      transform-origin: center;
+    }
+
+    @keyframes heartbeatSlow{
+      0%   { transform: scale(1); }
+      12%  { transform: scale(1.12); }
+      24%  { transform: scale(1); }
+      36%  { transform: scale(1.12); }
+      48%  { transform: scale(1); }
+      100% { transform: scale(1); }
+    }
+
+    .actions{
+      margin-top: 34px;
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeUp 1.0s ease .85s both;
+    }
+
+    .btn{
+      border: none;
+      border-radius: 999px;
+      padding: 12px 18px;
+      cursor: pointer;
+      background: rgba(255,255,255,.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.14);
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+
+    .btn:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 14px 28px rgba(0,0,0,.30);
+      background: rgba(255,255,255,.16);
+    }
+
+    .hint{
+      margin-top: 10px;
+      opacity: .55;
+      font-size: .9rem;
+      animation: fadeUp 1.0s ease .95s both;
+    }
+
+    @keyframes popIn{
+      0% { opacity: 0; transform: translateY(16px) scale(.98); }
+      60% { opacity: 1; transform: translateY(0) scale(1.02); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes fadeUp{
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="sparkle"></div>
+
+  <div class="page" id="page">
+    <div class="wrap">
+      <div class="hero">
+        <div class="small">uma última coisa</div>
+
+        <h1>
+          <span class="highlight">nunca mude.</span>
+        </h1>
+
+        <div class="msg">
+          Obrigado por ser <span class="highlight">EXATAMENTE VOCÊ</span>.<br>
+          Nunca mude.<br>
+          Eu <span class="highlight">SEMPRE</span> vou estar aqui pra o que precisar.<br><br>
+
+          E quando lembrar de mim<br>
+          lê tudo de novo...
+        </div>
+
+        <!-- ❤️ LOVE YOU BABY COM ❤️ DENTRO -->
+        <div class="love" id="loveText">
+          <span class="highlight">
+            love you baby!
+            <span class="heart">❤️</span>
+          </span>
+        </div>
+
+        <div class="actions">
+          <button class="btn" data-go="coisas-que-nunca-disse.html">Voltar ↩</button>
+          <button class="btn" data-go="presentes.html">Cartas 🃏</button>
+          <button class="btn" data-go="index.html">Início ✨</button>
+        </div>
+
+        <div class="hint">Dica: aperta <strong>Esc</strong> pra voltar.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const page = document.getElementById('page');
+    const love = document.getElementById('loveText');
+
+    // ❤️ mostra love + coração após 2s
+    setTimeout(() => {
+      love.classList.add('show');
+    }, 8000);
+
+    document.addEventListener('click', (e) => {
+      const go = e.target.closest('[data-go]');
+      if (!go) return;
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      const url = go.getAttribute('data-go');
+      page.classList.add('fade-out');
+      setTimeout(() => window.location.href = url, 420);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        page.classList.add('fade-out');
+        setTimeout(() => window.location.href = 'coisas-que-nunca-disse.html', 420);
+      }
+    });
+  </script>
+</body>
+</html>
