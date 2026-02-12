@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Feliz Aniversário ✨</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Segoe UI", sans-serif; }
+
+    body{
+      height: 100vh;
+      background: radial-gradient(circle at top, #1b1b2f, #0f0f1a 55%, #090912);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .page{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      animation: pageIn .55s ease forwards;
+    }
+    @keyframes pageIn{ from{opacity:0} to{opacity:1} }
+    .page.fade-out{ animation: pageOut .45s ease forwards; }
+    @keyframes pageOut{ from{opacity:1} to{opacity:0} }
+
+    .sparkle{
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(255,255,255,.18) 0 2px, transparent 3px),
+        radial-gradient(circle at 78% 26%, rgba(255,255,255,.14) 0 2px, transparent 3px),
+        radial-gradient(circle at 52% 74%, rgba(255,255,255,.10) 0 2px, transparent 3px),
+        radial-gradient(circle at 24% 68%, rgba(255,255,255,.12) 0 2px, transparent 3px),
+        radial-gradient(circle at 66% 52%, rgba(255,255,255,.08) 0 2px, transparent 3px);
+      animation: floaty 7s ease-in-out infinite;
+      opacity: .9;
+    }
+    @keyframes floaty{
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(12px); }
+    }
+
+    .veil{
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle, rgba(255,255,255,.06), transparent 60%);
+      animation: slowRotate 18s linear infinite;
+      pointer-events: none;
+      opacity: .55;
+    }
+    @keyframes slowRotate{
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    .container{
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      padding: 0 16px;
+    }
+
+    h1{
+      font-size: clamp(2.2rem, 6vw, 3.4rem);
+      margin-bottom: 14px;
+      opacity: 0;
+      animation: titleIn 1.2s ease .05s forwards;
+      text-shadow: 0 12px 35px rgba(0,0,0,.5);
+    }
+    @keyframes titleIn{
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .subtitle{
+      font-size: 1.05rem;
+      opacity: 0;
+      margin-bottom: 34px;
+      animation: fadeUp .9s ease .5s forwards;
+    }
+    @keyframes fadeUp{
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: .9; transform: translateY(0); }
+    }
+
+    .botao{
+      position: relative;
+      padding: 14px 28px;
+      font-size: 1.05rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.14);
+      color: #fff;
+      cursor: pointer;
+      opacity: 0;
+      transform: scale(.95);
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+      backdrop-filter: blur(6px);
+      overflow: hidden;
+    }
+
+    .botao::after{
+      content:"";
+      position:absolute;
+      top:-40%;
+      left:-60%;
+      width: 40%;
+      height: 180%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
+      transform: rotate(18deg);
+      transition: left .55s ease;
+      opacity: .65;
+    }
+
+    .botao:hover::after{ left: 120%; }
+
+    .botao.show{ animation: popIn .6s ease forwards; }
+    @keyframes popIn{
+      0% { opacity: 0; transform: scale(.9); }
+      60% { opacity: 1; transform: scale(1.05); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .botao:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 16px 32px rgba(0,0,0,.35);
+      background: rgba(255,255,255,.18);
+    }
+
+    .hint{
+      margin-top: 14px;
+      font-size: .9rem;
+      opacity: 0;
+      animation: fadeUp .8s ease 1.1s forwards;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="sparkle"></div>
+  <div class="veil"></div>
+
+  <div class="page" id="page">
+    <div class="container">
+      <h1>Feliz aniversário, Anoca 🎂</h1>
+      <div class="subtitle">Tem algo especial te esperando…</div>
+
+      <button class="botao" id="btnPresentes" data-go="presentes.html">
+        Quer ver seus presentes? 🎁
+      </button>
+
+      <div class="hint">(abre com calma 😌)</div>
+    </div>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById('btnPresentes').classList.add('show');
+    }, 3000);
+
+    const page = document.getElementById('page');
+    document.addEventListener('click', (e) => {
+      const go = e.target.closest('[data-go]');
+      if (!go) return;
+      e.preventDefault();
+      const url = go.getAttribute('data-go');
+      page.classList.add('fade-out');
+      setTimeout(() => window.location.href = url, 420);
+    });
+  </script>
+</body>
+</html>
